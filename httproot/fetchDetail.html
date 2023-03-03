@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script>
+            function getDetails(id){
+                fetch('http://localhost:8000/movies/'+id)
+                    .then(function (response) {
+                        return response.json(); 
+                    })
+                    .then(function (data) {
+                        // console.log(data.Director);
+                        const movieDetailsElement = document.getElementById("movieDetail");
+                        movieDetailsElement.innerHTML = data.Director;
+                    })
+                    .catch(function (err) {
+                        console.log("Something went wrong!", err);
+                    });
+            }
+        </script>
+    </head>
+    <body>
+        <a href="javascript:getDetails('6401adf7c93bd4d626839cb9')">Cliquez pour voir les détails</a>
+        <div id="movieDetail"></div>
+</html>
